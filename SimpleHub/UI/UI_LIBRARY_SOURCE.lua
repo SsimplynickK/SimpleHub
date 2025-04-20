@@ -4545,7 +4545,7 @@ end
 
 function library:CreateSettingsTab(menu)
     local settingsTab = menu:AddTab('  Settings  ', 999);
-    local configSection = settingsTab:AddSection('Config', 1);
+    local configSection = settingsTab:AddSection('Config', 2);
     local mainSection = settingsTab:AddSection('Main', 1);
 
     configSection:AddBox({text = 'Config Name', flag = 'configinput'})
@@ -4634,7 +4634,7 @@ function library:CreateSettingsTab(menu)
     for _,v in next, library.themes do
         table.insert(themeStrings, v.name)
     end
-    local themeSection = settingsTab:AddSection('Custom Theme', 2);
+
     local setByPreset = false
     library.flags.preset_theme = 'Default'
 
