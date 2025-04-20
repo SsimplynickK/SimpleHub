@@ -4634,8 +4634,24 @@ function library:CreateSettingsTab(menu)
     for _,v in next, library.themes do
         table.insert(themeStrings, v.name)
     end
-
+    local themeSection = settingsTab:AddSection('Custom Theme', 2);
+    local setByPreset = false
     library.flags.preset_theme = 'Default'
+
+    setByPreset = true
+    for _,v in next, library.themes do
+        if v.name == 'Default' then
+            for x, d in pairs(library.options) do
+                if v.theme[tostring(x)] ~= nil then
+                    d:SetColor(v.theme[tostring(x)])
+                end
+            end
+            library:SetTheme(v.theme)
+            break
+        end
+    end
+    setByPreset = false
+
 
     return settingsTab;
 end
