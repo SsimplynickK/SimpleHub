@@ -4626,14 +4626,9 @@ function library:CreateSettingsTab(menu)
                library:Unload() 
            end
        end})
-
-    mainSection:AddSeparator({text = 'Indicators'});
-
-    mainSection:AddToggle({text = 'Watermark', flag = 'watermark_enabled', state = false,});
-
-    mainSection:AddToggle({text = 'Keybinds', flag = 'keybind_indicator', state = false, callback = function(bool)
-        library.keyIndicator:SetEnabled(bool);
-    end})
+    
+    library.flags.watermark_enabled = false
+    library.flags.keybind_indicator = false
 
     local themeStrings = {"Custom"};
     for _,v in next, library.themes do
