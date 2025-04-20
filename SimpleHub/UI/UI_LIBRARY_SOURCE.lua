@@ -4627,17 +4627,13 @@ function library:CreateSettingsTab(menu)
            end
        end})
 
-    -- Watermark and keybinds functionality will still exist in the backend,
-    -- but they won't be visible in the UI and will be disabled by default
-    library.flags.watermark_enabled = false
-    library.flags.keybind_indicator = false
-    
-    -- Disable keybind indicator if it exists
-    if library.keyIndicator then
-        library.keyIndicator:SetEnabled(false)
-    end
+    mainSection:AddSeparator({text = 'Indicators'});
 
-    library:SetTheme('Default')
+    mainSection:AddToggle({text = 'Watermark', flag = 'watermark_enabled', state = false,});
+
+    mainSection:AddToggle({text = 'Keybinds', flag = 'keybind_indicator', state = false, callback = function(bool)
+        library.keyIndicator:SetEnabled(bool);
+    end})
 
     local themeStrings = {"Custom"};
     for _,v in next, library.themes do
@@ -4645,7 +4641,7 @@ function library:CreateSettingsTab(menu)
     end
     local themeSection = settingsTab:AddSection('Custom Theme', 2);
     local setByPreset = false
-    themeSection:AddList({text = 'Presets', flag = 'preset_theme', values = themeStrings, callback = function(newTheme)
+themeSection:AddList({text = 'Presets', flag = 'preset_theme', values = themeStrings, callback = function(newTheme)
         if newTheme == "Custom" then return end
         setByPreset = true
         for _,v in next, library.themes do
