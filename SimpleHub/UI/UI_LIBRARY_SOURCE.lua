@@ -4644,7 +4644,7 @@ function library:CreateSettingsTab(menu)
         library.keyIndicator:SetPosition(newUDim2(library.flags.keybind_indicator_x / 100, 0, library.flags.keybind_indicator_y / 100, 0));    
     end});
 
-    library:SetTheme(library.theme)
+    library:SetTheme('Default')
 
     return settingsTab;
 end
