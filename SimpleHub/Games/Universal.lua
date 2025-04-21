@@ -1,5 +1,5 @@
 -- Skeleton ESP Functionality
-local Skeleton_ESP_Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Blissful4992/ESPs/main/UniversalSkeleton.lua"))()
+local Skeleton_ESP_Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/SsimplynickK/SimpleHub/refs/heads/main/SimpleHub/UI/ESP_SKELETON_SOURCE.lua?nocache=1"))()
 
 local Skeletons = {}
 local Skeletons_enabled = false
