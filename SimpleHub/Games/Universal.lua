@@ -1,5 +1,5 @@
 -- Skeleton ESP Functionality
-local Skeleton_ESP_Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/SsimplynickK/SimpleHub/refs/heads/main/SimpleHub/UI/ESP_SKELETON_SOURCE.lua?nocache=1"))()
+local Skeleton_ESP_Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Blissful4992/ESPs/main/UniversalSkeleton.lua"))()
 
 local Skeletons = {}
 local Skeletons_enabled = false
@@ -28,13 +28,63 @@ local Window1  = library.NewWindow({
     size = UDim2.new(0, 600, 0.6, 6
 )})
 
-local ESP_Tab = Window1:AddTab("  ESP  ")
 local SettingsTab = library:CreateSettingsTab(Window1)
 
---Tab1:SetText("Text")
+-- GENERAL TAB
 
+local General_Tab = Window1:AddTab("  General  ", 1)
+local Movement = General_Tab:AddSection("Movement", 1)
+
+Movement:AddSlider({
+    enabled = true,
+    text = "Speed",
+    tooltip = "",
+    flag = "WalkSpeed_Slider",
+    suffix = " studs",
+    dragging = true,
+    focused = false,
+    min = 5,
+    max = 500,
+    increment = 1,
+    risky = false,
+    callback = function(v)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+    end
+})
+
+Movement:AddSlider({
+    enabled = true,
+    text = "Jump Height",
+    tooltip = "",
+    flag = "Jump_Height_Slider",
+    suffix = " studs",
+    dragging = true,
+    focused = false,
+    min = 50,
+    max = 500,
+    increment = 1,
+    risky = false,
+    callback = function(v)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+    end
+})
+
+Movement:AddToggle({
+    text = "Infinite Jump",
+    state = false,
+    risky = true,
+    tooltip = "",
+    flag = "Infinite_Jump",
+    risky = false,
+    callback = function(v)
+        loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Infinite%20Jump.txt"))()
+    end
+})
+
+-- ESP TAB
+
+local ESP_Tab = Window1:AddTab("  ESP  ", 2)
 local Player_ESP = ESP_Tab:AddSection("Player ESP", 1)
---Section1:SetText("Text")
 
 Player_ESP:AddToggle({
     text = "Skeleton ESP",
